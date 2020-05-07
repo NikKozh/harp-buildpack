@@ -42,7 +42,7 @@ mkdir -p $build_dir/node_modules
 if [ -f "$build_dir/package.json" ]; then
   # Found package.json; installing any npm dependencies
   status "Installing npm dependencies"
-  npm install --production 2>&1 | indent
+  LIBSASS_EXT="no" npm install --production 2>&1 | indent
 fi
 
 status "Polymer 3 install"
