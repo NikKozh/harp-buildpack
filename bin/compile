@@ -45,6 +45,12 @@ if [ -f "$build_dir/package.json" ]; then
   npm install --production 2>&1 | indent
 fi
 
+status "Polymer 3 install"
+npm install -g polymer-cli | indent
+
+status "Polymer 3 build"
+polymer build | indent
+
 # Copy harp dependency to node_modules
 cp -r $bp_dir/node_modules/harp $build_dir/node_modules/
 
@@ -53,6 +59,6 @@ status "Creating a harp server Procfile"
 echo "web: ./node_modules/harp/bin/harp server ${HARP_ROOT:-.} -p \$PORT" > $build_dir/Procfile
 
 # Update the PATH
-# status "Building runtime environment"
+status "Building runtime environment"
 mkdir -p $build_dir/.profile.d
 echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\";export NODE_ENV=${NODE_ENV:production}" > $build_dir/.profile.d/nodejs.sh
