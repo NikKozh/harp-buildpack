@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 # bin/detect <build-dir>
 
-echo "Harp"
+echo "polymer.json"
+
+build_dir=$1
+
+grep '"entrypoint"' < $build_dir/polymer.json > /dev/null
