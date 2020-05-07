@@ -51,13 +51,6 @@ npm install -g polymer-cli | indent
 status "Polymer 3 build"
 polymer build | indent
 
-# Copy harp dependency to node_modules
-# Didn't work!
-status "Copy harp dependency to node_modules"
-status "ls bp_dir"
-ls $bp_dir
-# cp -r $bp_dir/node_modules/harp $build_dir/node_modules/
-
 # Create a Procfile
 status "Creating a harp server Procfile"
 echo "web: ./node_modules/harp/bin/harp server ${HARP_ROOT:-.} -p \$PORT" > $build_dir/Procfile
